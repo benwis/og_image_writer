@@ -1,0 +1,28 @@
+{
+    "name": "og_image_writer",
+    "version": "1.0.0",
+    "license": "MIT",
+    "scripts": {
+      "build": "npm run build:browser && npm run build:node",
+      "build:browser": "wasm-pack build --target web --out-dir ./build/browser --out-name og_image_writer && rimraf ./build/browser/package.json",
+      "build:node": "wasm-pack build --target nodejs --out-dir ./build/node --out-name og_image_writer && rimraf ./build/node/package.json"
+    },
+    "sideEffects": false,
+    "files": [
+      "build"
+    ],
+    "types": "./build/browser/og_image_writer.d.ts",
+    "exports": {
+      ".": {
+        "browser": "./build/browser/og_image_writer.js",
+        "node": "./build/node/og_image_writer.js"
+      },
+      "./binary.wasm": {
+        "browser": "./build/browser/og_image_writer_bg.wasm",
+        "node": "./noop.js"
+      }
+    },
+    "devDependencies": {
+      "rimraf": "^3.0.2"
+    }
+  }

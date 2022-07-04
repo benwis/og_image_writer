@@ -3,3 +3,5 @@ Cargo.lock
 /examples/dist
 /examples/output_*.png
 /examples/output_*.jpg
+node_modules
+package-lock.json
